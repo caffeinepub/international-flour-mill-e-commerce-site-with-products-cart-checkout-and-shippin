@@ -1,0 +1,30 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T09:14:46.506Z",
+  "summary": "The diff implements removal of Email from the Contact page and footer, and removal of Facebook from Follow Us sections in Contact and Footer. It also updates metadata/documentation-like files that mention additional unrelated features/changes not part of the BuildRequest.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Updated project metadata/summary to describe broader product direction (e.g., shifting away from ordering/checkout and referencing WhatsApp/email/phone) beyond the specific request to remove Email/Facebook UI.",
+      "reason": "The BuildRequest only asked to remove Facebook from Follow Us and remove Email from Contact and footer; it did not request changes to project summaries/metadata describing broader feature scope.",
+      "evidence": [
+        "project_state.json (truncated): summary includes \"Shift away from online ordering/checkout\" and mentions \"WhatsApp/email/phone\""
+      ]
+    },
+    {
+      "description": "Updated repository file summary text that references numerous unrelated features/components (cart context, checkout, share/publish dialog, sticky cart button changes, etc.).",
+      "reason": "The BuildRequest scope is limited to removing Email/Facebook UI and ensuring the app builds; it does not request updating a file-inventory/summary document or introducing/mentioning other features.",
+      "evidence": [
+        "frontend-file-summaries.txt (truncated): entries referencing cart/checkout components and \"Publish\"/\"share dialog\" strings"
+      ]
+    }
+  ],
+  "confidence": 0.68,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "project_state.json"
+  ]
+}

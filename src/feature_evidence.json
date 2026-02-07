@@ -1,0 +1,79 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-remove-email-as-a-contact-method-from-the-contact-page-so-the-page-no-longer-shows-an-email-icon-an-email-us-label-or-a-mailto-link-address",
+      "featureTitle": "Remove Email as a contact method from the Contact page so the page no longer shows an email icon, an \"Email Us\" label, or a mailto link/address.",
+      "files": [
+        "frontend/src/pages/ContactPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-31"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-facebook-from-all-follow-us-ui-sections-so-the-site-no-longer-shows-a-facebook-link-icon-card-anywhere-it-currently-appears-including-the-contact-page-and-the-site-footer",
+      "featureTitle": "Remove Facebook from all \"Follow Us\" UI sections so the site no longer shows a Facebook link/icon/card anywhere it currently appears (including the Contact page and the site footer).",
+      "files": [
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/pages/ContactPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-32"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-email-from-the-footer-contact-area-so-the-footer-no-longer-displays-an-email-address-or-mailto-link-keep-the-phone-number-as-the-remaining-contact-detail",
+      "featureTitle": "Remove Email from the footer contact area so the footer no longer displays an email address or mailto link; keep the phone number as the remaining contact detail.",
+      "files": [
+        "frontend/src/components/layout/Footer.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-33"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-application-builds-and-deploys-successfully-after-removing-email-and-facebook-ui-elements-making-any-minimal-typescript-import-copy-cleanups-required-to-eliminate-build-errors",
+      "featureTitle": "Ensure the application builds and deploys successfully after removing Email and Facebook UI elements, making any minimal TypeScript/import/copy cleanups required to eliminate build errors.",
+      "files": [
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/pages/ContactPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-34"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

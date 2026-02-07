@@ -1,0 +1,358 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 23,
+  "summary": "Shift away from online ordering/checkout; focus on a product/info site with contact as the primary conversion path (WhatsApp/email/phone), while avoiding cart/checkout flows.",
+  "architectural_notes": [
+    "If cart/checkout are removed, also remove CartProvider usage and any remaining useCart hooks/components to prevent React context errors."
+  ],
+  "known_issues": [
+    "Runtime error reported: \"useCart must be used with CartProvider\" (cart hook used after CartProvider/cart flow was removed).",
+    "Contact section missing WhatsApp number / WhatsApp contact not correctly wired (should use same number as phone: +91 9400121295).",
+    "Phone number and WhatsApp contact still not added/wired in the live build (should use +91 9400121295 for both).",
+    "Build/deploy failed during the attempted update to remove Facebook/Email (\"Sorry, we couldn't generate your application\")."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-clean-modern-minimal-responsive-storefront-ui-with-an-earthy-natural-visual-theme-inspired-by-spices-and-kerala-culture-warm-neutrals-spice-accents-modern-typography-applied-consistently-across-all-pages-and-components",
+      "title": "Create a clean, modern, minimal, responsive storefront UI with an earthy/natural visual theme inspired by spices and Kerala culture (warm neutrals, spice accents, modern typography), applied consistently across all pages and components.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-site-navigation-and-pages-sections-home-about-us-products-cart-checkout-contact-us-and-social-media-links-section-can-be-part-of-contact-with-a-clear-header-nav-and-footer",
+      "title": "Implement site navigation and pages/sections: Home, About Us, Products, Cart & Checkout, Contact Us, and Social Media Links section (can be part of Contact), with a clear header/nav and footer.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-prominent-international-shipping-messaging-throughout-the-storefront-a-clear-international-shipping-available-callout-and-a-dedicated-section-listing-current-destination-countries-germany-usa-uk-dubai-uae-malta",
+      "title": "Add prominent international shipping messaging throughout the storefront: a clear “International Shipping Available” callout and a dedicated section listing current destination countries: Germany, USA, UK, Dubai (UAE), Malta.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-product-catalog-experience-with-a-products-listing-page-showing-product-cards-with-image-name-short-description-category-and-price-for-the-provided-product-types-coconut-oil-spice-powders-chilli-turmeric-coriander-other-masala-spice-powders-kerala-special-traditional-sweets",
+      "title": "Create a product catalog experience with a Products listing page showing product cards with image, name, short description, category, and price for the provided product types (coconut oil; spice powders: chilli, turmeric, coriander; other masala & spice powders; Kerala special traditional sweets).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-shopping-cart-functionality-users-can-add-products-to-cart-adjust-quantities-remove-items-and-see-a-running-subtotal",
+      "title": "Implement shopping cart functionality: users can add products to cart, adjust quantities, remove items, and see a running subtotal.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-simple-checkout-flow-that-allows-customers-to-place-an-order-without-third-party-payments-collect-customer-details-name-email-phone-shipping-country-shipping-address-optional-notes-show-an-order-summary-and-submit-the-order-to-the-backend",
+      "title": "Implement a simple checkout flow that allows customers to place an order without third-party payments: collect customer details (name, email, phone, shipping country, shipping address, optional notes), show an order summary, and submit the order to the backend.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-clear-ctas-including-order-now-and-add-to-cart-across-the-site-plus-an-optional-sticky-cart-order-button-that-is-visible-on-mobile-and-desktop-without-obstructing-content",
+      "title": "Add clear CTAs including “Order Now” and “Add to Cart” across the site, plus an optional sticky Cart/Order button that is visible on mobile and desktop without obstructing content.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-contact-us-section-page-with-whatsapp-contact-button-quick-chat-link-email-and-phone-placeholders-and-social-links-for-instagram-and-facebook",
+      "title": "Implement Contact Us section/page with WhatsApp contact button (quick chat link), email and phone placeholders, and social links for Instagram and Facebook.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-about-us-page-with-english-copy-that-tells-a-heritage-traditional-flour-mill-story-connected-to-kerala-culture-and-the-business-s-export-focus-no-unverifiable-claims-keep-text-generic-and-professional",
+      "title": "Create an About Us page with English copy that tells a heritage/traditional flour mill story connected to Kerala culture and the business’s export focus (no unverifiable claims; keep text generic and professional).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-frontend-is-fast-loading-and-mobile-friendly-optimize-image-usage-use-responsive-images-cards-and-avoid-unnecessary-large-assets-or-blocking-ui",
+      "title": "Ensure the frontend is fast-loading and mobile-friendly: optimize image usage, use responsive images/cards, and avoid unnecessary large assets or blocking UI.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-english-for-all-user-facing-text-throughout-the-website-navigation-buttons-headings-descriptions-checkout-fields-and-messages",
+      "title": "Use English for all user-facing text throughout the website (navigation, buttons, headings, descriptions, checkout fields, and messages).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-generated-static-images-from-frontend-public-assets-and-wire-them-into-the-ui-hero-product-placeholders-and-small-brand-mark-store-them-under-frontend-public-assets-generated-and-reference-them-directly-from-the-frontend",
+      "title": "Render generated static images from frontend public assets and wire them into the UI (hero, product placeholders, and small brand mark). Store them under frontend/public/assets/generated and reference them directly from the frontend.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-cart-checkout-route-and-any-remaining-cart-ui-entry-points-so-the-site-no-longer-exposes-cart-navigation-and-does-not-reference-cart-or-checkout-in-user-facing-navigation",
+      "title": "Remove the Cart/Checkout route and any remaining cart UI entry points so the site no longer exposes '/cart' navigation and does not reference cart or checkout in user-facing navigation.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-eliminate-all-runtime-usage-of-the-cart-context-to-resolve-the-error-usecart-must-be-used-within-cartprovider-by-removing-cart-hooks-usages-from-components-that-remain-in-the-app-rather-than-reintroducing-cartprovider",
+      "title": "Eliminate all runtime usage of the cart context to resolve the error \"useCart must be used within CartProvider\" by removing cart hooks/usages from components that remain in the app (rather than reintroducing CartProvider).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-product-browsing-ctas-to-use-contact-first-actions-instead-of-cart-checkout-actions-remove-the-add-to-cart-button-from-product-cards-and-replace-it-with-a-contact-action-that-links-users-to-whatsapp-or-the-contact-page-using-existing-whatsapp-link-behavior",
+      "title": "Update product browsing CTAs to use contact-first actions instead of cart/checkout actions: remove the \"Add to Cart\" button from product cards and replace it with a contact action that links users to WhatsApp (or the Contact page) using existing WhatsApp link behavior.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-contact-the-primary-conversion-path-across-the-site-by-ensuring-the-contact-page-is-accessible-from-the-header-navigation-and-that-the-floating-whatsapp-button-remains-available-site-wide",
+      "title": "Make Contact the primary conversion path across the site by ensuring the Contact page is accessible from the header navigation and that the floating WhatsApp button remains available site-wide.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-all-displayed-phone-contact-details-to-use-the-indian-number-9400121295-with-country-code-91-where-appropriate-on-the-contact-page-and-in-the-site-footer-including-the-visible-text-and-the-tel-link-target",
+      "title": "Update all displayed phone contact details to use the Indian number 9400121295 (with country code +91 where appropriate) on the Contact page and in the site footer, including the visible text and the `tel:` link target.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-wire-whatsapp-contact-to-use-the-same-number-as-the-mobile-number-9400121295-so-all-whatsapp-entry-points-contact-page-button-floating-whatsapp-button-and-any-product-card-whatsapp-actions-that-rely-on-the-shared-helper-open-a-chat-to-that-number",
+      "title": "Wire WhatsApp contact to use the same number as the mobile number (9400121295) so all WhatsApp entry points (Contact page button, floating WhatsApp button, and any product card WhatsApp actions that rely on the shared helper) open a chat to that number.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-adjust-the-contact-page-content-to-prioritize-whatsapp-and-instagram-for-international-customers-explicitly-discouraging-phone-calls-for-foreign-customers-while-keeping-the-indian-phone-number-available",
+      "title": "Adjust the Contact page content to prioritize WhatsApp and Instagram for international customers, explicitly discouraging phone calls for foreign customers, while keeping the Indian phone number available.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-investigate-the-current-build-deployment-failure-and-apply-the-minimal-code-config-changes-needed-so-the-project-builds-and-deploys-successfully",
+      "title": "Investigate the current build/deployment failure and apply the minimal code/config changes needed so the project builds and deploys successfully.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-shared-whatsapp-url-helper-to-use-the-business-whatsapp-number-9400121295-with-country-code-91-so-all-whatsapp-entry-points-open-a-chat-to-the-correct-number",
+      "title": "Update the shared WhatsApp URL helper to use the business WhatsApp number 9400121295 with country code 91, so all WhatsApp entry points open a chat to the correct number.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-placeholder-phone-number-text-and-tel-links-with-the-indian-phone-number-91-9400121295-anywhere-it-is-displayed-in-the-ui-including-the-contact-page-and-the-site-footer",
+      "title": "Replace placeholder phone number text and `tel:` links with the Indian phone number +91 9400121295 anywhere it is displayed in the UI, including the Contact page and the site footer.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-user-facing-product-list-category-text-to-explicitly-include-coconut-oil-spice-powders-chilli-turmeric-coriander-and-other-masala-spice-powders-wherever-the-site-summarizes-the-product-range-including-the-products-page-introduction-and-the-category-label-shown-on-product-cards",
+      "title": "Update user-facing product list/category text to explicitly include: \"Coconut oil\", \"Spice powders (chilli, turmeric, coriander)\", and \"Other masala & spice powders\" wherever the site summarizes the product range (including the Products page introduction and the category label shown on product cards).",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-frontend-product-grid-can-display-the-new-sweets-products-with-the-existing-generated-sweets-placeholder-image-mapping-by-adding-image-url-mappings-for-the-new-products-imageurl-values-to-the-existing-assets-generated-product-kerala-sweets-dim-800x800-png-asset",
+      "title": "Ensure the frontend product grid can display the new sweets products with the existing generated sweets placeholder image mapping by adding image URL mappings for the new products’ `imageUrl` values to the existing `/assets/generated/product-kerala-sweets.dim_800x800.png` asset.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-product-price-displays-from-the-storefront-ui-so-customers-do-not-see-any-currency-amounts-for-items-including-the-products-grid-cards-and-any-remaining-cart-checkout-ui-components-that-still-render-in-the-app",
+      "title": "Remove all product price displays from the storefront UI so customers do not see any currency amounts for items (including the Products grid cards, and any remaining cart/checkout UI components that still render in the app).",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-product-catalog-so-virgin-coconut-oil-is-no-longer-listed-displayed-anywhere-and-only-pure-coconut-oil-is-available-in-the-catalog",
+      "title": "Update the product catalog so \"Virgin Coconut Oil\" is no longer listed/displayed anywhere, and only \"Pure Coconut Oil\" is available in the catalog.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-prominent-publish-action-in-the-site-ui-that-lets-the-user-share-the-site-link-without-setting-up-a-personal-custom-domain-the-action-must-display-the-current-public-url-and-provide-a-one-click-copy-link-behavior",
+      "title": "Add a prominent \"Publish\" action in the site UI that lets the user share the site link without setting up a personal/custom domain. The action must display the current public URL and provide a one-click \"Copy link\" behavior.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-concise-english-helper-text-in-the-publish-ui-explaining-that-no-custom-domain-is-required-and-the-displayed-link-can-be-shared-as-is",
+      "title": "Add concise English helper text in the Publish UI explaining that no custom domain is required and the displayed link can be shared as-is.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-email-as-a-contact-method-from-the-contact-page-so-the-page-no-longer-shows-an-email-icon-an-email-us-label-or-a-mailto-link-address",
+      "title": "Remove Email as a contact method from the Contact page so the page no longer shows an email icon, an \"Email Us\" label, or a mailto link/address.",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-facebook-from-all-follow-us-ui-sections-so-the-site-no-longer-shows-a-facebook-link-icon-card-anywhere-it-currently-appears-including-the-contact-page-and-the-site-footer",
+      "title": "Remove Facebook from all \"Follow Us\" UI sections so the site no longer shows a Facebook link/icon/card anywhere it currently appears (including the Contact page and the site footer).",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-email-from-the-footer-contact-area-so-the-footer-no-longer-displays-an-email-address-or-mailto-link-keep-the-phone-number-as-the-remaining-contact-detail",
+      "title": "Remove Email from the footer contact area so the footer no longer displays an email address or mailto link; keep the phone number as the remaining contact detail.",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-application-builds-and-deploys-successfully-after-removing-email-and-facebook-ui-elements-making-any-minimal-typescript-import-copy-cleanups-required-to-eliminate-build-errors",
+      "title": "Ensure the application builds and deploys successfully after removing Email and Facebook UI elements, making any minimal TypeScript/import/copy cleanups required to eliminate build errors.",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create responsive, fast-loading website with modern minimal design and earthy Kerala/spice-inspired color palette and fonts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement product browsing: product listing pages with images, descriptions, and prices for oils, spice powders/masalas, and Kerala sweets",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add prominent \"International Shipping Available\" messaging and a section listing shipping countries (Germany, USA, UK, Dubai/UAE, Malta)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create required pages/sections: Home, About Us (heritage story), Products, Cart & Checkout, Contact Us, Social Media Links",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add contact & social features: WhatsApp contact button/quick chat, Instagram link, Facebook link, email & phone placeholders",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Update Contact section: set phone number to +91 9400121295 and ensure WhatsApp uses the same number; for non-Indian/foreign visitors, de-emphasize calling and prioritize Instagram/WhatsApp contact actions",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Update the Products list/categories to include: Coconut oil; Spice powders (chilli, turmeric, coriander); Other masala & spice powders",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Add/expand Kerala traditional sweets product entries to include Unda, Achappam, and Kozalappam (names and catalog display)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Add three new Kerala traditional sweets products to the backend static product list: \"Unda\", \"Achappam\", and \"Kozalappam\". Each product must have an English name and English description, be categorized as sweets, be available by default, and have unique sequential product IDs that do not conflict with existing IDs.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Remove product prices from the UI (product cards/listings and any product details/sections) so items are displayed without pricing",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Update coconut oil product offerings to remove \"Virgin Coconut Oil\" and ensure only \"Pure Coconut Oil\" is listed/displayed",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Provide a simple \"Publish\" action/workflow so the user can make the current draft live and share a stable public link (no custom/personal domain needed)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Remove Facebook from the \"Follow us\" section and remove Email from the Contact section (and related UI like icons/links as applicable)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "International flour mill e-commerce site with products, cart/checkout, and shipping countries",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

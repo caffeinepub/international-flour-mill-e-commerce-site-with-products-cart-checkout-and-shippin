@@ -1,0 +1,80 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Remove Facebook from Follow Us and remove Email from Contact (including footer)",
+  "requirements": [
+    {
+      "id": "REQ-31",
+      "summary": "Remove Email as a contact method from the Contact page UI (icon, label, and mailto link).",
+      "acceptanceCriteria": [
+        "The Contact page (frontend/src/pages/ContactPage.tsx) no longer renders any Email section/card/row.",
+        "There is no mailto: link visible or present in the DOM on the Contact page.",
+        "No unused imports remain on the Contact page (e.g., Mail icon) after removal."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Remove the Email contact block (icon, label, and mailto link) and delete related imports/usages (e.g., Mail icon, CONTACT_INFO.email, COPY.contact.email) so no mailto: remains on the Contact page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "summary": "Remove Facebook from all Follow Us UI sections (Contact page and footer) while keeping Instagram unchanged.",
+      "acceptanceCriteria": [
+        "The Contact page social section no longer renders the Facebook card/link (and does not import/render the Facebook icon).",
+        "The footer \"Follow Us\" section no longer renders a Facebook icon/link (and does not import the Facebook icon).",
+        "Instagram remains available and unchanged in both places."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Remove the Facebook social link/card from the Contact page and delete the associated Facebook icon import; ensure the Instagram card remains unchanged."
+        },
+        {
+          "path": "frontend/src/components/layout/Footer.tsx",
+          "operation": "modify",
+          "description": "Remove the Facebook icon/link from the footer Follow Us section and delete the associated Facebook icon import; ensure the Instagram icon/link remains unchanged."
+        }
+      ]
+    },
+    {
+      "id": "REQ-33",
+      "summary": "Remove Email from the footer contact area, keeping only the phone contact detail.",
+      "acceptanceCriteria": [
+        "The footer (frontend/src/components/layout/Footer.tsx) no longer renders a mailto: link or email address.",
+        "The footer still renders the phone tel: link using the configured phone number.",
+        "No unused CONTACT_INFO.email references remain after the footer change."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/Footer.tsx",
+          "operation": "modify",
+          "description": "Delete the footer email mailto link/address from the Contact section while keeping the phone tel: link intact; remove any now-unused CONTACT_INFO.email references."
+        }
+      ]
+    },
+    {
+      "id": "REQ-34",
+      "summary": "Perform minimal TypeScript/import cleanup to ensure the frontend builds and runs without errors after removing Email and Facebook UI elements.",
+      "acceptanceCriteria": [
+        "The frontend builds without TypeScript or lint errors caused by removed imports/constants.",
+        "No runtime errors are introduced by the change (site loads and navigates to Contact page successfully)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Verify the Contact page compiles cleanly after removals by ensuring there are no leftover unused imports/variables and no lingering mailto/facebook references."
+        },
+        {
+          "path": "frontend/src/components/layout/Footer.tsx",
+          "operation": "modify",
+          "description": "Verify the footer compiles cleanly after removals by ensuring there are no leftover unused imports/variables and no lingering mailto/facebook references; confirm phone tel: link still renders."
+        }
+      ]
+    }
+  ]
+}
