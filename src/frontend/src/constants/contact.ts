@@ -11,4 +11,10 @@ export const CONTACT_INFO = {
   email: {
     address: 'info@keralaspicemill.com',
   },
+  instagram: {
+    // Instagram profile URL
+    url: 'https://www.instagram.com/koonamthek_flour123mill/',
+    // Display handle
+    handle: '@koonamthek_flour123mill',
+  },
 };

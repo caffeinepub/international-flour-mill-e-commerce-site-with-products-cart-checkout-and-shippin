@@ -1,11 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Publish the current draft to the live (production) site and provide a stable, publicly shareable live URL.
+**Goal:** Update the Home page hero headline to explicitly mention sweets and snacks.
 
 **Planned changes:**
-- Deploy the latest build to the production/live environment so it updates the public site URL.
-- Update the in-app Publish/Share flow to display the correct live public URL in the Share dialog.
-- Add/verify one-click “Copy Link” behavior in the Share dialog with visible success feedback.
+- Replace the Home page hero `<h1>` text from “Authentic Kerala Spices & Traditional Foods” to “Authentic Kerala Spices & Traditional Sweets & Snacks” (proper capitalization).
+- Ensure no other user-facing text is changed.
 
-**User-visible outcome:** Users can open the app, click Publish to see the correct live public URL, copy it with one click, and share a link that loads successfully for anyone (including unauthenticated/incognito visitors).
+**User-visible outcome:** On the Home page, visitors see the updated hero headline “Authentic Kerala Spices & Traditional Sweets & Snacks”.

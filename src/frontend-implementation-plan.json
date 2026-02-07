@@ -1,58 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix Publish/Share live URL display and copy-to-clipboard behavior",
+  "title": "Update Home hero headline to include sweets and snacks",
   "requirements": [
     {
-      "id": "REQ-38",
-      "summary": "Ensure the app can surface a stable, production-ready public URL suitable for sharing after publishing.",
+      "id": "REQ-41",
+      "summary": "Change the Home page hero headline to mention traditional sweets and snacks instead of foods.",
       "acceptanceCriteria": [
-        "The latest deployed version is live in production (not only preview).",
-        "The live site loads successfully for an unauthenticated user in a fresh/incognito browser session.",
-        "A stable public URL for the live site is available to share."
+        "On the Home page, the main hero <h1> no longer contains the word \"Foods\".",
+        "The hero <h1> displays exactly: \"Authentic Kerala Spices & Traditional Sweets & Snacks\".",
+        "No other user-facing text is changed as part of this update."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/utils/publicUrl.ts",
-          "operation": "create",
-          "description": "Add a small utility to resolve the shareable public site URL using runtime origin with an optional build-time override (e.g., VITE_LIVE_SITE_URL) and basic safeguards to avoid returning empty/localhost URLs in production. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/.env.example",
-          "operation": "create",
-          "description": "Document the optional VITE_LIVE_SITE_URL configuration used to force the stable live public URL shown in the Publish/Share dialog. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/publish/PublishShareDialog.tsx",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Use the new public URL resolver so the dialog displays the correct live public URL when deployed, rather than relying solely on window.location.origin. Keep all text in English. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-39",
-      "summary": "Make the existing Publish/Share UI reliably open from the header, show the live URL, and support one-click copy with visible success feedback.",
-      "acceptanceCriteria": [
-        "Clicking the Publish action in the header opens the Share dialog.",
-        "The dialog shows the live site URL (not an empty string, and not a localhost URL in production).",
-        "Clicking \"Copy Link\" copies the shown URL to the clipboard and provides visible success feedback.",
-        "All user-facing text remains in English."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/publish/PublishShareDialog.tsx",
-          "operation": "modify",
-          "description": "Harden the copy-to-clipboard flow: copy the resolved live URL, ensure the URL string is non-empty before copy, provide visible success feedback, and add a safe fallback when Clipboard API is unavailable (e.g., select input + execCommand). Continue using the existing shadcn-ui Dialog/Button/Input components without modifying immutable ui component files; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/layout/HeaderNav.tsx",
-          "operation": "modify",
-          "description": "Confirm the header Publish action triggers the existing PublishShareDialog in both desktop and mobile layouts, and ensure no removed Email/Facebook elements are reintroduced. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/constants/copy.ts",
-          "operation": "modify",
-          "description": "Align Publish/Share dialog labels with the desired UX (English-only), including any needed copy strings for copy success/error states while keeping existing wording conventions. Verify the component's usage instructions before implementing."
+          "description": "Update the hero <h1> text from \"Authentic Kerala Spices & Traditional Foods\" to exactly \"Authentic Kerala Spices & Traditional Sweets & Snacks\". Ensure no other user-facing copy is modified and do not touch any files under frontend/src/components/ui."
         }
       ]
     }

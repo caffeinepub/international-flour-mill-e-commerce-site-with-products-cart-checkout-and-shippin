@@ -1,54 +1,29 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-07T09:38:05.546Z",
-  "summary": "REQ-39 is partially implemented via a new public URL resolver and enhanced Publish/Share dialog copy-to-clipboard UX. However, there is no evidence of changes that actually publish/deploy the current draft to production (REQ-38). Additionally, the public URL resolver can still return an empty string in production (e.g., if running on localhost without VITE_LIVE_SITE_URL set), which risks failing REQ-39’s requirement that the dialog shows a valid live URL.",
-  "missing_requirements": [
-    {
-      "id": "REQ-38",
-      "requirement": "Publish the current draft/version to the live (production) site so the publicly accessible URL is updated to the latest build and can be shared.",
-      "reason": "The diff only shows frontend URL/copy UI changes and a backend hard-coded product list change; it does not show any deployment/publish mechanism, release configuration, or any code path that triggers/promotes a draft build to production.",
-      "evidence": [
-        "backend/main.mo",
-        "frontend/src/components/publish/PublishShareDialog.tsx",
-        "frontend/src/utils/publicUrl.ts"
-      ]
-    },
-    {
-      "id": "REQ-39",
-      "requirement": "Ensure the Share dialog shows the live site URL (not an empty string, and not a localhost URL in production).",
-      "reason": "`getPublicSiteUrl()` explicitly returns an empty string when `import.meta.env.PROD && origin.includes('localhost')`, and there is no other guaranteed production-safe fallback besides an optional env var. This can still yield an empty URL in production builds depending on hosting/origin and env configuration, violating the 'not an empty string' acceptance criterion.",
-      "evidence": [
-        "frontend/src/utils/publicUrl.ts",
-        "frontend/src/components/publish/PublishShareDialog.tsx",
-        "frontend/.env.example"
-      ]
-    }
-  ],
+  "generatedAt": "2026-02-07T16:08:48.752Z",
+  "summary": "REQ-41 hero <h1> text on Home page appears updated to exactly \"Authentic Kerala Spices & Traditional Sweets & Snacks\". No evidence of forbidden edits under frontend/src/components/ui. However, additional non-requested project metadata/docs files were modified.",
+  "missing_requirements": [],
   "hallucinated_features": [
     {
-      "description": "Backend product catalog list/content changes (hard-coded `productsList` updates).",
-      "reason": "BuildRequest is about publishing and ensuring the Publish/Share UI shows the correct live URL with copy-to-clipboard. Product catalog modifications are explicitly listed as non-goals ('Changing product catalog content...').",
+      "description": "Modified repository documentation/metadata files not requested by REQ-41 (frontend file summaries).",
+      "reason": "BuildRequest only asks to update the Home page hero headline text; it does not request updating generated summaries/docs.",
       "evidence": [
-        "backend/main.mo"
+        "frontend-file-summaries.txt"
       ]
     },
     {
-      "description": "Added custom-domain related helper/constraint copy in the Publish section (e.g., 'Custom domains must be 5-50 characters...' and 'No custom domain needed.').",
-      "reason": "Custom domain work is a stated non-goal; adding UI copy about domain constraints is not requested as part of the publish/share link requirements.",
+      "description": "Modified project state tracking file not requested by REQ-41.",
+      "reason": "BuildRequest only asks to change the Home page hero headline; no requirement mentions updating project_state.json.",
       "evidence": [
-        "frontend/src/constants/copy.ts"
+        "project_state.json"
       ]
     }
   ],
   "confidence": 0.74,
   "changed_files": [
-    "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/.env.example",
-    "frontend/src/components/publish/PublishShareDialog.tsx",
-    "frontend/src/constants/copy.ts",
-    "frontend/src/utils/publicUrl.ts",
+    "frontend/src/pages/HomePage.tsx",
     "project_state.json"
   ]
 }

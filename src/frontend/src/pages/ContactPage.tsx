@@ -51,7 +51,7 @@ export function ContactPage() {
             
             <div className="space-y-4">
               <a
-                href="https://instagram.com"
+                href={CONTACT_INFO.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 p-4 rounded-lg border hover:border-primary hover:bg-primary/5 transition-colors group"
@@ -59,7 +59,7 @@ export function ContactPage() {
                 <SiInstagram className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
                 <div>
                   <h3 className="font-medium">Instagram</h3>
-                  <p className="text-sm text-muted-foreground">@keralaspicemill</p>
+                  <p className="text-sm text-muted-foreground">{CONTACT_INFO.instagram.handle}</p>
                 </div>
               </a>
             </div>

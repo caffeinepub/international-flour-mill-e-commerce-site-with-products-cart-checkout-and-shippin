@@ -1,67 +1,36 @@
 {
   "kind": "build_request",
-  "title": "Publish the current version and provide the live share link",
+  "title": "Update homepage hero headline to mention sweets and snacks",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-38",
-      "text": "Publish the current draft/version to the live (production) site so the publicly accessible URL is updated to the latest build and can be shared.",
-      "target": "unknown",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "publish it"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The latest deployed version is live in production (not only preview).",
-        "The live site loads successfully for an unauthenticated user in a fresh/incognito browser session.",
-        "A stable public URL for the live site is available to share."
-      ]
-    },
-    {
-      "id": "REQ-39",
-      "text": "Ensure the existing in-app Publish/Share UI displays the correct live public URL and supports one-click copy-to-clipboard after publishing.",
+      "id": "REQ-41",
+      "text": "Update the Home page hero headline text to replace \"Authentic Kerala Spices & Traditional Foods\" with \"Authentic Kerala Spices & Traditional Sweets & Snacks\" (English, properly capitalized).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-5"
         ],
         "quotes": [
-          "publish it"
+          "instead of Authentic Kerala Spices & Traditional Foods\ncan u make it uthentic Kerala Spices & Traditional sweets&snacks"
         ]
       },
       "acceptanceCriteria": [
-        "Clicking the Publish action in the header opens the Share dialog.",
-        "The dialog shows the live site URL (not an empty string, and not a localhost URL in production).",
-        "Clicking \"Copy Link\" copies the shown URL to the clipboard and provides visible success feedback.",
-        "All user-facing text remains in English."
+        "On the Home page, the main hero <h1> no longer contains the word \"Foods\".",
+        "The hero <h1> displays exactly: \"Authentic Kerala Spices & Traditional Sweets & Snacks\".",
+        "No other user-facing text is changed as part of this update."
       ]
     }
   ],
   "constraints": [
-    "Do not reintroduce cart/checkout flows or any cart context usage.",
-    "Do not reintroduce Email or Facebook UI elements that were previously removed.",
-    "Do not edit files under frontend/src/components/ui or other frontend immutable paths defined by the platform."
+    "Do not modify any files under frontend/src/components/ui (read-only)."
   ],
   "nonGoals": [
-    "Adding or configuring a custom domain.",
-    "Changing product catalog content, pricing visibility behavior, or contact methods as part of this publish request."
+    "Do not change product catalog data, categories, or images.",
+    "Do not reintroduce cart/checkout UI or flows."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

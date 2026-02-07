@@ -38,7 +38,7 @@ export function Footer() {
             <h3 className="font-semibold mb-3">{COPY.contact.followUs}</h3>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com"
+                href={CONTACT_INFO.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"

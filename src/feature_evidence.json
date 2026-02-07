@@ -2,12 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-publish-the-current-draft-version-to-the-live-production-site-so-the-publicly-accessible-url-is-updated-to-the-latest-build-and-can-be-shared",
-      "featureTitle": "Publish the current draft/version to the live (production) site so the publicly accessible URL is updated to the latest build and can be shared.",
+      "featureId": "feature-update-the-home-page-hero-headline-text-to-replace-authentic-kerala-spices-traditional-foods-with-authentic-kerala-spices-traditional-sweets-snacks-english-properly-capitalized",
+      "featureTitle": "Update the Home page hero headline text to replace \"Authentic Kerala Spices & Traditional Foods\" with \"Authentic Kerala Spices & Traditional Sweets & Snacks\" (English, properly capitalized).",
       "files": [
-        "frontend/.env.example",
-        "frontend/src/components/publish/PublishShareDialog.tsx",
-        "frontend/src/utils/publicUrl.ts"
+        "frontend/src/pages/HomePage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,26 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-38"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-ensure-the-existing-in-app-publish-share-ui-displays-the-correct-live-public-url-and-supports-one-click-copy-to-clipboard-after-publishing",
-      "featureTitle": "Ensure the existing in-app Publish/Share UI displays the correct live public URL and supports one-click copy-to-clipboard after publishing.",
-      "files": [
-        "frontend/src/components/publish/PublishShareDialog.tsx",
-        "frontend/src/constants/copy.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-39"
+        "REQ-41"
       ],
       "confidence": "high"
     }

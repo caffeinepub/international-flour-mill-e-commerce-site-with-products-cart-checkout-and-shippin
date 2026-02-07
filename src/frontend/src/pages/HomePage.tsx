@@ -14,7 +14,7 @@ export function HomePage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-balance leading-tight">
-                Authentic Kerala Spices & Traditional Foods
+                Authentic Kerala Spices & Traditional Sweets & Snacks
               </h1>
               <p className="text-lg text-muted-foreground text-balance">
                 Premium quality coconut oil, spice powders (chilli, turmeric, coriander), other masala & spice powders, and traditional sweets exported worldwide from our heritage flour mill.

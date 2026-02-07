@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 27,
+  "projectStateVersion": 31,
   "summary": "Shift away from online ordering/checkout; focus on a product/info site with contact as the primary conversion path (WhatsApp/email/phone), while avoiding cart/checkout flows.",
   "architectural_notes": [
     "If cart/checkout are removed, also remove CartProvider usage and any remaining useCart hooks/components to prevent React context errors."
@@ -11,7 +11,8 @@
     "Phone number and WhatsApp contact still not added/wired in the live build (should use +91 9400121295 for both).",
     "Build/deploy failed during the attempted update to remove Facebook/Email (\"Sorry, we couldn't generate your application\").",
     "Go-live retry still encountering a deployment error when deploying Draft Version 11 to production.",
-    "Domain validation error: domain must be 5–50 chars and contain only letters, numbers, and hyphens (\"Koonamtheeku Flour mill\" rejected)."
+    "Domain validation error: domain must be 5–50 chars and contain only letters, numbers, and hyphens (\"Koonamtheeku Flour mill\" rejected).",
+    "Instagram icon/link currently routes to generic Instagram instead of the business profile; should open @koonamthek_flour123mill."
   ],
   "isFixRequest": false,
   "existing_features": [
@@ -310,6 +311,22 @@
         "REQ-39"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-all-instagram-links-icons-in-the-site-ui-so-they-open-the-business-instagram-profile-for-account-name-koonamthek-flour123mill-not-the-generic-instagram-homepage-and-ensure-any-visible-instagram-handle-text-matches-koonamthek-flour123mill-use-the-canonical-profile-url-https-www-instagram-com-koonamthek-flour123mill-and-keep-links-opening-in-a-new-tab-with-rel-noopener-noreferrer",
+      "title": "Update all Instagram links/icons in the site UI so they open the business Instagram profile for account name `koonamthek_flour123mill` (not the generic Instagram homepage), and ensure any visible Instagram handle text matches `@koonamthek_flour123mill`. Use the canonical profile URL `https://www.instagram.com/koonamthek_flour123mill/` and keep links opening in a new tab with `rel=\"noopener noreferrer\"`.",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-home-page-hero-headline-text-to-replace-authentic-kerala-spices-traditional-foods-with-authentic-kerala-spices-traditional-sweets-snacks-english-properly-capitalized",
+      "title": "Update the Home page hero headline text to replace \"Authentic Kerala Spices & Traditional Foods\" with \"Authentic Kerala Spices & Traditional Sweets & Snacks\" (English, properly capitalized).",
+      "reqIds": [
+        "REQ-41"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -390,6 +407,18 @@
     {
       "id": "AR-14",
       "summary": "Remove Facebook from the \"Follow us\" section and remove Email from the Contact section (and related UI like icons/links as applicable)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Update the Instagram icon/link so it opens the business Instagram profile @koonamthek_flour123mill (instead of generic Instagram home page) across all places it appears (e.g., Contact/Follow Us/footer)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Update the homepage/hero headline text from \"Authentic Kerala Spices & Traditional Foods\" to \"uthentic Kerala Spices & Traditional sweets&snacks\" (as requested)",
       "reqIds": [],
       "status": "pending"
     }
