@@ -1,9 +1,9 @@
+// No migration needed as only hard-coded list changed, no persistent data types.
 import Map "mo:core/Map";
 import Nat "mo:core/Nat";
 import Runtime "mo:core/Runtime";
 import Iter "mo:core/Iter";
 
-// No migration needed as only hard-coded list changed, no persistent data types.
 actor {
   // Types
   type Category = {

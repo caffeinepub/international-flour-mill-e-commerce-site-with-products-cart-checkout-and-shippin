@@ -1,78 +1,58 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove Facebook from Follow Us and remove Email from Contact (including footer)",
+  "title": "Fix Publish/Share live URL display and copy-to-clipboard behavior",
   "requirements": [
     {
-      "id": "REQ-31",
-      "summary": "Remove Email as a contact method from the Contact page UI (icon, label, and mailto link).",
+      "id": "REQ-38",
+      "summary": "Ensure the app can surface a stable, production-ready public URL suitable for sharing after publishing.",
       "acceptanceCriteria": [
-        "The Contact page (frontend/src/pages/ContactPage.tsx) no longer renders any Email section/card/row.",
-        "There is no mailto: link visible or present in the DOM on the Contact page.",
-        "No unused imports remain on the Contact page (e.g., Mail icon) after removal."
+        "The latest deployed version is live in production (not only preview).",
+        "The live site loads successfully for an unauthenticated user in a fresh/incognito browser session.",
+        "A stable public URL for the live site is available to share."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Remove the Email contact block (icon, label, and mailto link) and delete related imports/usages (e.g., Mail icon, CONTACT_INFO.email, COPY.contact.email) so no mailto: remains on the Contact page."
-        }
-      ]
-    },
-    {
-      "id": "REQ-32",
-      "summary": "Remove Facebook from all Follow Us UI sections (Contact page and footer) while keeping Instagram unchanged.",
-      "acceptanceCriteria": [
-        "The Contact page social section no longer renders the Facebook card/link (and does not import/render the Facebook icon).",
-        "The footer \"Follow Us\" section no longer renders a Facebook icon/link (and does not import the Facebook icon).",
-        "Instagram remains available and unchanged in both places."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Remove the Facebook social link/card from the Contact page and delete the associated Facebook icon import; ensure the Instagram card remains unchanged."
+          "path": "frontend/src/utils/publicUrl.ts",
+          "operation": "create",
+          "description": "Add a small utility to resolve the shareable public site URL using runtime origin with an optional build-time override (e.g., VITE_LIVE_SITE_URL) and basic safeguards to avoid returning empty/localhost URLs in production. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/layout/Footer.tsx",
-          "operation": "modify",
-          "description": "Remove the Facebook icon/link from the footer Follow Us section and delete the associated Facebook icon import; ensure the Instagram icon/link remains unchanged."
-        }
-      ]
-    },
-    {
-      "id": "REQ-33",
-      "summary": "Remove Email from the footer contact area, keeping only the phone contact detail.",
-      "acceptanceCriteria": [
-        "The footer (frontend/src/components/layout/Footer.tsx) no longer renders a mailto: link or email address.",
-        "The footer still renders the phone tel: link using the configured phone number.",
-        "No unused CONTACT_INFO.email references remain after the footer change."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/layout/Footer.tsx",
-          "operation": "modify",
-          "description": "Delete the footer email mailto link/address from the Contact section while keeping the phone tel: link intact; remove any now-unused CONTACT_INFO.email references."
-        }
-      ]
-    },
-    {
-      "id": "REQ-34",
-      "summary": "Perform minimal TypeScript/import cleanup to ensure the frontend builds and runs without errors after removing Email and Facebook UI elements.",
-      "acceptanceCriteria": [
-        "The frontend builds without TypeScript or lint errors caused by removed imports/constants.",
-        "No runtime errors are introduced by the change (site loads and navigates to Contact page successfully)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Verify the Contact page compiles cleanly after removals by ensuring there are no leftover unused imports/variables and no lingering mailto/facebook references."
+          "path": "frontend/.env.example",
+          "operation": "create",
+          "description": "Document the optional VITE_LIVE_SITE_URL configuration used to force the stable live public URL shown in the Publish/Share dialog. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/layout/Footer.tsx",
+          "path": "frontend/src/components/publish/PublishShareDialog.tsx",
           "operation": "modify",
-          "description": "Verify the footer compiles cleanly after removals by ensuring there are no leftover unused imports/variables and no lingering mailto/facebook references; confirm phone tel: link still renders."
+          "description": "Use the new public URL resolver so the dialog displays the correct live public URL when deployed, rather than relying solely on window.location.origin. Keep all text in English. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-39",
+      "summary": "Make the existing Publish/Share UI reliably open from the header, show the live URL, and support one-click copy with visible success feedback.",
+      "acceptanceCriteria": [
+        "Clicking the Publish action in the header opens the Share dialog.",
+        "The dialog shows the live site URL (not an empty string, and not a localhost URL in production).",
+        "Clicking \"Copy Link\" copies the shown URL to the clipboard and provides visible success feedback.",
+        "All user-facing text remains in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/publish/PublishShareDialog.tsx",
+          "operation": "modify",
+          "description": "Harden the copy-to-clipboard flow: copy the resolved live URL, ensure the URL string is non-empty before copy, provide visible success feedback, and add a safe fallback when Clipboard API is unavailable (e.g., select input + execCommand). Continue using the existing shadcn-ui Dialog/Button/Input components without modifying immutable ui component files; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/HeaderNav.tsx",
+          "operation": "modify",
+          "description": "Confirm the header Publish action triggers the existing PublishShareDialog in both desktop and mobile layouts, and ensure no removed Email/Facebook elements are reintroduced. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/constants/copy.ts",
+          "operation": "modify",
+          "description": "Align Publish/Share dialog labels with the desired UX (English-only), including any needed copy strings for copy success/error states while keeping existing wording conventions. Verify the component's usage instructions before implementing."
         }
       ]
     }

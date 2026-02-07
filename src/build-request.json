@@ -1,99 +1,54 @@
 {
   "kind": "build_request",
-  "title": "Remove Facebook from Follow Us and remove Email from Contact (including footer)",
-  "priority": "high",
+  "title": "Publish the current version and provide the live share link",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-31",
-      "text": "Remove Email as a contact method from the Contact page so the page no longer shows an email icon, an \"Email Us\" label, or a mailto link/address.",
-      "target": "frontend",
+      "id": "REQ-38",
+      "text": "Publish the current draft/version to the live (production) site so the publicly accessible URL is updated to the latest build and can be shared.",
+      "target": "unknown",
       "source": {
         "messageIds": [
-          "msg-5",
-          "msg-11"
+          "msg-4"
         ],
         "quotes": [
-          "can  u remove facebook in follow us and remove email in contacts please",
-          "yes"
+          "publish it"
         ]
       },
       "acceptanceCriteria": [
-        "The Contact page (frontend/src/pages/ContactPage.tsx) no longer renders any Email section/card/row.",
-        "There is no mailto: link visible or present in the DOM on the Contact page.",
-        "No unused imports remain on the Contact page (e.g., Mail icon) after removal."
+        "The latest deployed version is live in production (not only preview).",
+        "The live site loads successfully for an unauthenticated user in a fresh/incognito browser session.",
+        "A stable public URL for the live site is available to share."
       ]
     },
     {
-      "id": "REQ-32",
-      "text": "Remove Facebook from all \"Follow Us\" UI sections so the site no longer shows a Facebook link/icon/card anywhere it currently appears (including the Contact page and the site footer).",
+      "id": "REQ-39",
+      "text": "Ensure the existing in-app Publish/Share UI displays the correct live public URL and supports one-click copy-to-clipboard after publishing.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5",
-          "msg-11"
+          "msg-4"
         ],
         "quotes": [
-          "can  u remove facebook in follow us and remove email in contacts please",
-          "yes"
+          "publish it"
         ]
       },
       "acceptanceCriteria": [
-        "The Contact page social section no longer renders the Facebook card/link (and does not import/render the Facebook icon).",
-        "The footer \"Follow Us\" section no longer renders a Facebook icon/link (and does not import the Facebook icon).",
-        "Instagram remains available and unchanged in both places."
-      ]
-    },
-    {
-      "id": "REQ-33",
-      "text": "Remove Email from the footer contact area so the footer no longer displays an email address or mailto link; keep the phone number as the remaining contact detail.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2",
-          "msg-11"
-        ],
-        "quotes": [
-          "Just tell me: should I also remove the email icon from the footer, or keep it there?",
-          "yes"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The footer (frontend/src/components/layout/Footer.tsx) no longer renders a mailto: link or email address.",
-        "The footer still renders the phone tel: link using the configured phone number.",
-        "No unused CONTACT_INFO.email references remain after the footer change."
-      ]
-    },
-    {
-      "id": "REQ-34",
-      "text": "Ensure the application builds and deploys successfully after removing Email and Facebook UI elements, making any minimal TypeScript/import/copy cleanups required to eliminate build errors.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-7",
-          "msg-9",
-          "msg-11"
-        ],
-        "quotes": [
-          "❌ Sorry, we couldn't generate your application",
-          "want me to try the build again?",
-          "yes"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The frontend builds without TypeScript or lint errors caused by removed imports/constants.",
-        "No runtime errors are introduced by the change (site loads and navigates to Contact page successfully)."
+        "Clicking the Publish action in the header opens the Share dialog.",
+        "The dialog shows the live site URL (not an empty string, and not a localhost URL in production).",
+        "Clicking \"Copy Link\" copies the shown URL to the clipboard and provides visible success feedback.",
+        "All user-facing text remains in English."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (read-only).",
-    "Do not modify immutable hook files (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
-    "Keep all user-facing text in English."
+    "Do not reintroduce cart/checkout flows or any cart context usage.",
+    "Do not reintroduce Email or Facebook UI elements that were previously removed.",
+    "Do not edit files under frontend/src/components/ui or other frontend immutable paths defined by the platform."
   ],
   "nonGoals": [
-    "Do not add new social networks or new contact methods.",
-    "Do not implement or reintroduce cart/checkout flows.",
-    "Do not change WhatsApp or phone number behavior (beyond removing email/facebook UI as requested)."
+    "Adding or configuring a custom domain.",
+    "Changing product catalog content, pricing visibility behavior, or contact methods as part of this publish request."
   ],
   "imageRequirements": {
     "required": [],

@@ -1,72 +1,56 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-07T09:14:46.509Z",
+  "generatedAt": "2026-02-07T09:38:05.550Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-31",
-        "summary": "Remove Email as a contact method from the Contact page so the page no longer shows an email icon, an \"Email Us\" label, or a mailto link/address.",
+        "id": "REQ-38",
+        "summary": "Publish the current draft/version to the live (production) site so the publicly accessible URL is updated to the latest build and can be shared.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/ContactPage.tsx"
+          "frontend/src/utils/publicUrl.ts",
+          "frontend/.env.example",
+          "frontend/src/components/publish/PublishShareDialog.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/ContactPage.tsx"
+          "frontend/src/utils/publicUrl.ts",
+          "frontend/.env.example",
+          "frontend/src/components/publish/PublishShareDialog.tsx"
         ]
       },
       {
-        "id": "REQ-32",
-        "summary": "Remove Facebook from all \"Follow Us\" UI sections so the site no longer shows a Facebook link/icon/card anywhere it currently appears (including the Contact page and the site footer).",
+        "id": "REQ-39",
+        "summary": "Ensure the existing in-app Publish/Share UI displays the correct live public URL and supports one-click copy-to-clipboard after publishing.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/components/layout/Footer.tsx"
+          "frontend/src/components/publish/PublishShareDialog.tsx",
+          "frontend/src/components/layout/HeaderNav.tsx",
+          "frontend/src/constants/copy.ts"
         ],
         "matchedFiles": [
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/components/layout/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-33",
-        "summary": "Remove Email from the footer contact area so the footer no longer displays an email address or mailto link; keep the phone number as the remaining contact detail.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/layout/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/layout/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-34",
-        "summary": "Ensure the application builds and deploys successfully after removing Email and Facebook UI elements, making any minimal TypeScript/import/copy cleanups required to eliminate build errors.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/components/layout/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/components/layout/Footer.tsx"
+          "frontend/src/components/publish/PublishShareDialog.tsx",
+          "frontend/src/constants/copy.ts"
         ]
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/layout/Footer.tsx",
-    "frontend/src/pages/ContactPage.tsx",
+    "frontend/.env.example",
+    "frontend/src/components/publish/PublishShareDialog.tsx",
+    "frontend/src/constants/copy.ts",
+    "frontend/src/utils/publicUrl.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

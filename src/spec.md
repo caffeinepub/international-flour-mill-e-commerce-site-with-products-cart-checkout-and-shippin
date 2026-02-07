@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Remove Facebook from all “Follow Us” sections and remove Email as a contact method from the Contact page and footer.
+**Goal:** Publish the current draft to the live (production) site and provide a stable, publicly shareable live URL.
 
 **Planned changes:**
-- Update `frontend/src/pages/ContactPage.tsx` to remove the Email contact UI (icon/label/mailto) and remove the Facebook item from the social “Follow Us” section while keeping Instagram unchanged.
-- Update `frontend/src/components/layout/Footer.tsx` to remove the email address/mailto link from the contact area (keep phone/tel link) and remove the Facebook link/icon from the footer “Follow Us” section while keeping Instagram unchanged.
-- Perform minimal TypeScript/import/constant cleanups to prevent unused imports/references and ensure the frontend builds and runs without errors.
+- Deploy the latest build to the production/live environment so it updates the public site URL.
+- Update the in-app Publish/Share flow to display the correct live public URL in the Share dialog.
+- Add/verify one-click “Copy Link” behavior in the Share dialog with visible success feedback.
 
-**User-visible outcome:** The Contact page and footer no longer show any Email contact option or Facebook social link; phone/WhatsApp and Instagram remain available as before.
+**User-visible outcome:** Users can open the app, click Publish to see the correct live public URL, copy it with one click, and share a link that loads successfully for anyone (including unauthenticated/incognito visitors).

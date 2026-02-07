@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 23,
+  "projectStateVersion": 27,
   "summary": "Shift away from online ordering/checkout; focus on a product/info site with contact as the primary conversion path (WhatsApp/email/phone), while avoiding cart/checkout flows.",
   "architectural_notes": [
     "If cart/checkout are removed, also remove CartProvider usage and any remaining useCart hooks/components to prevent React context errors."
@@ -9,9 +9,11 @@
     "Runtime error reported: \"useCart must be used with CartProvider\" (cart hook used after CartProvider/cart flow was removed).",
     "Contact section missing WhatsApp number / WhatsApp contact not correctly wired (should use same number as phone: +91 9400121295).",
     "Phone number and WhatsApp contact still not added/wired in the live build (should use +91 9400121295 for both).",
-    "Build/deploy failed during the attempted update to remove Facebook/Email (\"Sorry, we couldn't generate your application\")."
+    "Build/deploy failed during the attempted update to remove Facebook/Email (\"Sorry, we couldn't generate your application\").",
+    "Go-live retry still encountering a deployment error when deploying Draft Version 11 to production.",
+    "Domain validation error: domain must be 5–50 chars and contain only letters, numbers, and hyphens (\"Koonamtheeku Flour mill\" rejected)."
   ],
-  "isFixRequest": true,
+  "isFixRequest": false,
   "existing_features": [
     {
       "id": "feature-create-a-clean-modern-minimal-responsive-storefront-ui-with-an-earthy-natural-visual-theme-inspired-by-spices-and-kerala-culture-warm-neutrals-spice-accents-modern-typography-applied-consistently-across-all-pages-and-components",
@@ -266,6 +268,46 @@
       "title": "Ensure the application builds and deploys successfully after removing Email and Facebook UI elements, making any minimal TypeScript/import/copy cleanups required to eliminate build errors.",
       "reqIds": [
         "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-any-typescript-compilation-errors-that-prevent-the-app-from-building-including-removing-incorrect-usage-of-the-react-namespace-in-frontend-src-components-publish-publishsharedialog-tsx-e-g-replace-react-reactnode-with-an-explicitly-imported-reactnode-type-or-an-equivalent-type-that-does-not-require-the-react-namespace",
+      "title": "Fix any TypeScript compilation errors that prevent the app from building, including removing incorrect usage of the `React` namespace in `frontend/src/components/publish/PublishShareDialog.tsx` (e.g., replace `React.ReactNode` with an explicitly imported `ReactNode` type or an equivalent type that does not require the `React` namespace).",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-identify-and-apply-the-minimal-code-config-changes-needed-so-the-project-builds-and-deploys-successfully-to-production-draft-version-11-go-live-retry-without-reintroducing-cart-checkout-flows-or-email-facebook-ui-elements-that-were-previously-removed",
+      "title": "Identify and apply the minimal code/config changes needed so the project builds and deploys successfully to production (Draft Version 11 go-live retry), without reintroducing cart/checkout flows or email/Facebook UI elements that were previously removed.",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-concise-english-helper-text-in-the-publish-share-ui-to-prevent-invalid-domain-subdomain-inputs-by-documenting-the-allowed-pattern-5-50-characters-only-letters-numbers-and-hyphens-matching-the-platform-validation-message-the-user-encountered",
+      "title": "Add concise English helper text in the Publish/share UI to prevent invalid domain/subdomain inputs by documenting the allowed pattern (5–50 characters; only letters, numbers, and hyphens), matching the platform validation message the user encountered.",
+      "reqIds": [
+        "REQ-37"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-publish-the-current-draft-version-to-the-live-production-site-so-the-publicly-accessible-url-is-updated-to-the-latest-build-and-can-be-shared",
+      "title": "Publish the current draft/version to the live (production) site so the publicly accessible URL is updated to the latest build and can be shared.",
+      "reqIds": [
+        "REQ-38"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-existing-in-app-publish-share-ui-displays-the-correct-live-public-url-and-supports-one-click-copy-to-clipboard-after-publishing",
+      "title": "Ensure the existing in-app Publish/Share UI displays the correct live public URL and supports one-click copy-to-clipboard after publishing.",
+      "reqIds": [
+        "REQ-39"
       ],
       "version": 1
     }

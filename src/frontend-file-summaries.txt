@@ -3,7 +3,7 @@
   "frontend/src/main.tsx": "Application entry point wrapping the app with QueryClient, InternetIdentity, and CartProvider contexts.",
   "frontend/src/index.css": "Global styles with OKLCH color system defining warm earthy Kerala-inspired palette (terracotta, turmeric, sand tones) for light and dark modes.",
   "frontend/tailwind.config.js": "Tailwind configuration extending theme with Kerala-inspired color tokens, Inter font family, custom shadows, and responsive container settings.",
-  "frontend/src/constants/copy.ts": "Centralized English UI copy for navigation labels, CTAs, shipping messages, cart/checkout text, contact information, and new publish/share dialog strings.",
+  "frontend/src/constants/copy.ts": "Centralized English UI copy for navigation labels, CTAs, shipping messages, cart/checkout text, contact information, and publish/share dialog strings including copy success/error states.",
   "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching products (with filtering to exclude \"Virgin Coconut Oil\" and de-duplicate coconut oil entries), individual product by ID, placing orders, and retrieving order confirmations from the backend.",
   "frontend/src/state/cart/CartContext.tsx": "Cart context provider managing cart items with add, update quantity, remove, and clear actions, persisted to sessionStorage.",
   "frontend/src/state/cart/cartSelectors.ts": "Helper utilities for calculating line totals and subtotals for cart items; formatPrice function removed as prices are no longer displayed.",
@@ -27,5 +27,7 @@
   "frontend/src/pages/ContactPage.tsx": "Contact page displaying phone, WhatsApp button, Instagram social link, and business hours; email contact method removed from all sections.",
   "frontend/src/utils/whatsapp.ts": "Utility function that generates WhatsApp chat URLs using the shared contact constants to keep WhatsApp number consistent with mobile number.",
   "frontend/src/constants/contact.ts": "Single source of truth for contact information including phone (tel, display, WhatsApp formats) and email address to ensure consistency across all contact entry points.",
-  "frontend/src/components/publish/PublishShareDialog.tsx": "Reusable Publish/Share dialog component that displays the current site URL in a read-only field with one-click copy functionality and success confirmation, using shadcn Dialog primitives."
+  "frontend/src/components/publish/PublishShareDialog.tsx": "Reusable Publish/Share dialog component that displays the resolved public site URL with hardened copy-to-clipboard functionality including modern Clipboard API, fallback for older browsers, validation, visible success/error feedback, and proper button states.",
+  "frontend/src/utils/publicUrl.ts": "Utility function that resolves the shareable public site URL using runtime origin with optional VITE_LIVE_SITE_URL override and safeguards against localhost URLs in production.",
+  "frontend/.env.example": "Documentation file showing the optional VITE_LIVE_SITE_URL environment variable configuration for overriding the public site URL displayed in the Publish/Share dialog."
 }

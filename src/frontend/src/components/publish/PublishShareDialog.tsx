@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ReactNode } from 'react';
 import { Check, Copy, Share2 } from 'lucide-react';
 import {
   Dialog,
@@ -11,25 +11,59 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { COPY } from '../../constants/copy';
+import { getPublicSiteUrl } from '../../utils/publicUrl';
 
 interface PublishShareDialogProps {
-  trigger?: React.ReactNode;
+  trigger?: ReactNode;
 }
 
 export function PublishShareDialog({ trigger }: PublishShareDialogProps) {
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
+  const [copyError, setCopyError] = useState(false);
   
-  // Get the current site URL from window.location
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : '';
+  // Get the public site URL using the resolver
+  const siteUrl = getPublicSiteUrl();
 
   const handleCopyLink = async () => {
+    // Reset error state
+    setCopyError(false);
+
+    // Validate URL before copying
+    if (!siteUrl || siteUrl.trim().length === 0) {
+      setCopyError(true);
+      return;
+    }
+
     try {
-      await navigator.clipboard.writeText(siteUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      // Try modern Clipboard API first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(siteUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } else {
+        // Fallback for older browsers
+        const input = document.createElement('input');
+        input.value = siteUrl;
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        input.setSelectionRange(0, 99999);
+        
+        const success = document.execCommand('copy');
+        document.body.removeChild(input);
+        
+        if (success) {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        } else {
+          setCopyError(true);
+        }
+      }
     } catch (err) {
       console.error('Failed to copy link:', err);
+      setCopyError(true);
     }
   };
 
@@ -63,11 +97,12 @@ export function PublishShareDialog({ trigger }: PublishShareDialogProps) {
               size="sm"
               onClick={handleCopyLink}
               className="shrink-0"
+              disabled={!siteUrl || siteUrl.trim().length === 0}
             >
               {copied ? (
                 <>
                   <Check className="h-4 w-4 mr-2" />
-                  Copied
+                  {COPY.publish.copied}
                 </>
               ) : (
                 <>
@@ -84,9 +119,19 @@ export function PublishShareDialog({ trigger }: PublishShareDialogProps) {
               {COPY.publish.copiedSuccess}
             </div>
           )}
+
+          {copyError && (
+            <div className="text-sm text-destructive font-medium">
+              {COPY.publish.copyError}
+            </div>
+          )}
           
           <p className="text-sm text-muted-foreground">
             {COPY.publish.helperText}
+          </p>
+          
+          <p className="text-xs text-muted-foreground border-t pt-3">
+            {COPY.publish.domainConstraints}
           </p>
         </div>
       </DialogContent>

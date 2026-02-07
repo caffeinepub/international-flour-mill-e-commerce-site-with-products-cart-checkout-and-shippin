@@ -56,7 +56,10 @@ export const COPY = {
     title: 'Share Your Site',
     description: 'Share this link with anyone. No custom domain needed.',
     copyButton: 'Copy Link',
+    copied: 'Copied',
     copiedSuccess: 'Link copied to clipboard!',
+    copyError: 'Failed to copy link. Please try selecting and copying manually.',
     helperText: 'This link can be shared as-is. You don\'t need to set up a personal domain.',
+    domainConstraints: 'Note: Custom domains must be 5-50 characters and contain only letters, numbers, and hyphens.',
   },
 };
